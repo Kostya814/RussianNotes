@@ -1,0 +1,72 @@
+﻿<Window x:Class="RussianNotes.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RussianNotes"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="700">
+    <Grid>
+        <Button Name="Save" 
+                Content="Добавить запись" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center"
+                Click="Save_Click"/>
+        <Button Name="Delete" 
+                Content="Удалить записи" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Top" 
+                Margin="0,50,0,0"
+                Click="Delete_Click"/>
+        <TextBox Name="TextNotes"
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Bottom"
+                Margin="0,0,0,50" 
+                 Width="100"
+                 Height="Auto"/>
+        <WrapPanel HorizontalAlignment="Left" 
+                   Height="405" 
+                   Width="280" 
+                   Background="#E0FFFF" 
+                   VerticalAlignment="Center">
+            <TextBlock Text="Текущие дела"/>
+            <ListBox HorizontalAlignment="Stretch" 
+                     HorizontalContentAlignment="Stretch" 
+                     MouseDoubleClick="Online_MouseDoubleClick"
+                Name="Online" Height="405" Width="280">
+                 <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel MaxWidth="270">
+                            <TextBlock HorizontalAlignment="Stretch" 
+                                       TextWrapping="Wrap" 
+                                       Foreground="Blue"  
+                                       Text= "{Binding Name}">
+                            </TextBlock>
+                            <TextBlock Foreground ="Red"  HorizontalAlignment="Right" Text="{Binding status}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </WrapPanel>
+        <WrapPanel HorizontalAlignment="Left" Height="405" Width="300" Background="#E0FFFF" VerticalAlignment="Center" Margin="400,0,0,0">
+            <TextBlock Text="Завершенные дела"/>
+            <ListBox HorizontalAlignment="Stretch" 
+                     HorizontalContentAlignment="Stretch"
+                     SelectionMode="Multiple"
+                Name="Offline" Height="405" Width="286">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel MaxWidth="270">
+                            <TextBlock HorizontalAlignment="Stretch" 
+                                       TextWrapping="Wrap" 
+                                       Foreground="Blue"  
+                                       Text= "{Binding Name}">
+                             </TextBlock>
+                            <TextBlock Foreground ="Red"  HorizontalAlignment="Right" Text="{Binding status}" />
+                        </StackPanel>                                       
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </WrapPanel>
+    </Grid>
+</Window>
